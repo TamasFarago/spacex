@@ -1,13 +1,13 @@
 import React from 'react';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
-import Latest from '../../Screens/Latest';
+import Completed from '../../Screens/Completed';
 import Upcomings from '../../Screens/Upcomings';
 import {tabBarScreenOptions} from './utils';
-import {View} from "react-native"
+import {Icon} from './styles';
 
 type TopNavigatorParamList = {
   Upcomings: undefined;
-  Latest: undefined;
+  Completed: undefined;
 };
 
 const Tab = createMaterialTopTabNavigator<TopNavigatorParamList>();
@@ -19,10 +19,20 @@ const TopTabNavigator = () => {
         name="Upcomings"
         component={Upcomings}
         options={{
-          tabBarIcon: () => <View style={{height: 20, width: 20, backgroundColor: "red"}} />,
+          tabBarIcon: () => (
+            <Icon source={require('../../Assets/icons/clock.png')} />
+          ),
         }}
       />
-      <Tab.Screen name="Latest" component={Latest} />
+      <Tab.Screen
+        name="Completed"
+        component={Completed}
+        options={{
+          tabBarIcon: () => (
+            <Icon source={require('../../Assets/icons/completed.png')} />
+          ),
+        }}
+      />
     </Tab.Navigator>
   );
 };

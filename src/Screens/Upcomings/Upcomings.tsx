@@ -1,8 +1,9 @@
-import {Text, View} from 'react-native';
-import React, {useCallback} from 'react';
-import colors from '../../Assets/colors';
-import {useFocusEffect} from '@react-navigation/native';
+import {FlatList} from 'react-native';
+import React from 'react';
+import {Container} from './styles';
 import useFetch from '../../Hooks/useFetch';
+import Card from '../../Components/Card';
+import { ILaunchData } from '../../interfaces';
 
 const Upcomings = () => {
   const {launches} = useFetch({endpoint: 'upcoming'});
@@ -10,9 +11,17 @@ const Upcomings = () => {
   console.log('UPCOMING', launches);
 
   return (
-    <View style={{flex: 1, backgroundColor: colors.black}}>
-      <Text>Upcomings</Text>
-    </View>
+    <Container>
+      <FlatList
+        contentContainerStyle={{paddingTop: 16}}
+        initialNumToRender={20}
+        data={launches}
+        keyExtractor={item => item.mission_name}
+        renderItem={({item}: {item: ILaunchData}) => (
+          <Card item={item}/>
+        )}
+      />
+    </Container>
   );
 };
 

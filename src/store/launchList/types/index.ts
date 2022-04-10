@@ -1,0 +1,6 @@
+export const FILTERS_BY_OLDEST = "launches/FILTERS_BY_OLDEST"
+export const FILTERS_BY_LATEST = "launches/FILTERS_BY_LATEST"
+export const FILTERS_BY_SUCCESS = "launches/FILTERS_BY_SUCCESS"
+export const FILTERS_BY_FAILED = "launches/FILTERS_BY_FAILED"
+export const ADD_UPCOMINGS = "launches/ADD_UPCOMINGS"
+export const ADD_COMPLETED = "launches/ADD_COMPLETED"

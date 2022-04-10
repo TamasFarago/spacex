@@ -6,6 +6,7 @@ import {
   Name,
   Icon,
   SuccessText,
+  CardBackground,
 } from './styles';
 import {formatDate} from '../../Screens/utils';
 import {ILaunchData} from '../../interfaces';
@@ -19,17 +20,31 @@ const Card = ({item}: {item: ILaunchData}) => {
   return (
     <CardContainer
       activeOpacity={0.8}
-      onPress={() => navigation.navigate('LaunchDetails', {details: item})}>
-      <CardContent>
-        <Date>{formatDate(item.launch_date_local)}</Date>
-        <Name>{item.mission_name}</Name>
-        {status !== null && (
-          <SuccessText status={status}>
-            {status ? 'Success' : 'Failure'}
-          </SuccessText>
-        )}
-      </CardContent>
-      <Icon source={{uri: item.links.mission_patch_small}} resizeMode="contain" />
+      onPress={() => navigation.navigate('LaunchDetails', {details: item})}
+      background={
+        item.links.flickr_images.length && item.links.flickr_images[0]
+      }>
+      <CardBackground
+        imageStyle={{borderRadius: 8, opacity: 0.7}}
+        source={
+          item.links.flickr_images.length
+            ? {uri: item.links.flickr_images[0]}
+            : require('../../Assets/images/rocket.jpg')
+        }>
+        <CardContent>
+          <Date>{formatDate(item.launch_date_local)}</Date>
+          <Name>{item.mission_name}</Name>
+          {status !== null && (
+            <SuccessText status={status}>
+              {status ? 'Success' : 'Failure'}
+            </SuccessText>
+          )}
+        </CardContent>
+        <Icon
+          source={{uri: item.links.mission_patch_small}}
+          resizeMode="contain"
+        />
+      </CardBackground>
     </CardContainer>
   );
 };

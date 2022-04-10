@@ -4,6 +4,7 @@ import CompletedScreen from '../../Screens/Completed';
 import UpcomingsScreen from '../../Screens/Upcomings';
 import {tabBarScreenOptions} from './utils';
 import {Icon} from './styles';
+import {SafeAreaView} from "react-native"
 
 type TopNavigatorParamList = {
   Upcomings: undefined;

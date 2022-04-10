@@ -1,8 +1,9 @@
 import React from 'react';
-import {StatusBar} from 'react-native';
+import {StatusBar, LogBox} from 'react-native';
 import Navigator from './Navigator';
 
 const App = () => {
+  LogBox.ignoreAllLogs();
   return (
     <>
       <StatusBar barStyle={'light-content'} />

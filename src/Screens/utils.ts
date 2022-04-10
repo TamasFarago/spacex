@@ -6,3 +6,15 @@ export const formatDate = (time: string): string => {
     const day = date.getDate()
     return `${monthMap[month]} ${day}. ${year}`
 }
+
+export const missionStatus = (detailsStatus: boolean | null): string => {
+    const status = detailsStatus
+    switch(status) {
+        case null:
+            return "Waiting for Launch"
+        case false:
+            return "Failed"
+        case true:
+            return "Successful Launch"
+    }
+}

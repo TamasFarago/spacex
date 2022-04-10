@@ -1,7 +1,7 @@
 import React from 'react';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
-import Completed from '../../Screens/Completed';
-import Upcomings from '../../Screens/Upcomings';
+import CompletedScreen from '../../Screens/Completed';
+import UpcomingsScreen from '../../Screens/Upcomings';
 import {tabBarScreenOptions} from './utils';
 import {Icon} from './styles';
 
@@ -17,7 +17,7 @@ const TopTabNavigator = () => {
     <Tab.Navigator screenOptions={tabBarScreenOptions}>
       <Tab.Screen
         name="Upcomings"
-        component={Upcomings}
+        component={UpcomingsScreen}
         options={{
           tabBarIcon: () => (
             <Icon source={require('../../Assets/icons/clock.png')} />
@@ -26,7 +26,7 @@ const TopTabNavigator = () => {
       />
       <Tab.Screen
         name="Completed"
-        component={Completed}
+        component={CompletedScreen}
         options={{
           tabBarIcon: () => (
             <Icon source={require('../../Assets/icons/completed.png')} />

@@ -2,9 +2,14 @@ import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import TopTabNavigator from '../TopTabNavigator';
 import colors from '../../Assets/colors';
+import LaunchDetailsScreen from "../../Screens/LaunchDetails"
+import { ILaunchData } from '../../interfaces';
 
-type MainStackParamList = {
-  Tab: undefined
+export type MainStackParamList = {
+  Tab: undefined,
+  LaunchDetails: {
+    details: ILaunchData
+  }
 }
 
 const Stack = createStackNavigator<MainStackParamList>();
@@ -13,13 +18,13 @@ const MainNavigator = () => {
   return (
     <Stack.Navigator
       screenOptions={{
-        title: 'Launches',
         headerStyle: {
           backgroundColor: colors.black,
         },
         headerTintColor: colors.white,
       }}>
-      <Stack.Screen name="Tab" component={TopTabNavigator} />
+      <Stack.Screen name="Tab" component={TopTabNavigator} options={{title: "Launches"}}/>
+      <Stack.Screen name="LaunchDetails" component={LaunchDetailsScreen} options={{title: "Launch Details"}}/>
     </Stack.Navigator>
   );
 };

@@ -16,7 +16,7 @@ export const CardContainer = styled.TouchableOpacity<{
   background-color: ${colors.grey};
   width: ${width * 0.9};
   align-self: center;
-  border-radius: 80px;
+  border-radius: 8px;
   flex-direction: row;
 `;
 
@@ -41,7 +41,7 @@ export const Name = styled.Text`
   color: ${colors.white};
   font-weight: 700;
   font-size: 24px;
-  max-width: ${width * 0.6};
+  max-width: ${width * 0.6}px;
 `;
 
 export const Icon = styled.Image`

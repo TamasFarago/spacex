@@ -18,7 +18,6 @@ const LaunchDetails = () => {
   const {
     params: {details},
   } = useRoute<ScreenRouteProps>();
-  console.log('DETAILS', details);
 
   const scrollViewRef = useRef(new Animated.Value(0)).current;
 

@@ -109,5 +109,8 @@ export type ILaunchData = {
   export interface ILaunchListState {
       completed: ILaunchData[] | null;
       upcomings: ILaunchData[] | null;
-      filteredData: ILaunchData[] | null;
+      filteredCompleted: ILaunchData[] | null;
+      filteredUpcomings: ILaunchData[] | null;
+      byDate: boolean;
+      byStatus: boolean;    
   }

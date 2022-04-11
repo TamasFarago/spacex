@@ -4,7 +4,8 @@ import {
   FILTERS_BY_SUCCESS,
   FILTERS_BY_FAILED,
   ADD_UPCOMINGS,
-  ADD_COMPLETED
+  ADD_COMPLETED,
+  REMOVE_FILTERS
 } from '../types';
 import { ILaunchData } from '.';
 
@@ -34,6 +35,10 @@ export interface IAddCompleted {
   payload: ILaunchData
 }
 
+export interface IRemoveFilters {
+  type: typeof REMOVE_FILTERS
+}
+
 export type LaunchListActionTypes =
   | IFiltersByFailed
   | IFiltersByLatest
@@ -41,3 +46,4 @@ export type LaunchListActionTypes =
   | IFiltersByOldest
   | IAddUpcomings
   | IAddCompleted
+  | IRemoveFilters

@@ -1,24 +1,23 @@
-import {View, Text, TouchableOpacity} from 'react-native';
 import React from 'react';
-import {Container} from './styles';
+import {Container, Logo, Icon, Button} from './styles';
 import {useNavigation} from '@react-navigation/native';
-import {useDispatch} from 'react-redux';
-import { filtersByOldest } from '../../store/launchList/actions';
+import { View } from 'react-native';
+import { FilterNavigationProp } from '../../Screens/Filter/interfaces';
 
 const Header = () => {
-  const navigation = useNavigation();
- 
-  const dispatch = useDispatch();
+  const navigation = useNavigation<FilterNavigationProp>();
 
-  const filter = () => {
-      dispatch(filtersByOldest())
+  const openFilter = () => {
+    navigation.navigate("Filter")
   }
 
   return (
     <Container>
-      <TouchableOpacity onPress={filter}>
-        <Text style={{color: 'white'}}>FILTER</Text>
-      </TouchableOpacity>
+      <View />
+      <Logo source={require("../../Assets/images/logo.png")} resizeMode="contain"/>
+      <Button onPress={openFilter}>
+        <Icon source={require("../../Assets/icons/filter.png")}/>
+      </Button>
     </Container>
   );
 };

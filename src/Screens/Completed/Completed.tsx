@@ -2,23 +2,26 @@ import {FlatList} from 'react-native';
 import React from 'react';
 import useFetch from '../../Hooks/useFetch';
 import {Container} from './styles';
-import { ILaunchData } from '../../interfaces';
 import Card from '../../Components/Card';
+import {useSelector} from 'react-redux';
+import IStateTree from '../../store/IStateTree';
+import {ILaunchData} from '../../store/launchList/models';
 
 const Latest = () => {
-  const {launches} = useFetch({endpoint: 'past'});
+  useFetch({endpoint: 'past'});
 
-  console.log('LATEST', launches);
+  const {byDate, byStatus, completed, filteredCompleted} = useSelector(
+    (state: IStateTree) => state.launchList,
+  );
+
   return (
     <Container>
       <FlatList
         contentContainerStyle={{paddingVertical: 16}}
         initialNumToRender={20}
-        data={launches}
+        data={byDate || byStatus ? filteredCompleted : completed}
         keyExtractor={item => item.mission_name}
-        renderItem={({item}: {item: ILaunchData}) => (
-          <Card item={item}/>
-        )}
+        renderItem={({item}: {item: ILaunchData}) => <Card item={item} />}
       />
     </Container>
   );

@@ -14,14 +14,14 @@ export const CardContainer = styled.TouchableOpacity<{
 }>`
   margin: 10px;
   background-color: ${colors.grey};
-  width: ${width * 0.9};
+  width: ${width * 0.9}px;
   align-self: center;
   border-radius: 8px;
   flex-direction: row;
 `;
 
 export const CardBackground = styled.ImageBackground`
-  width: ${width * 0.9};
+  width: ${width * 0.9}px;
   flex-direction: row;
   padding: 16px;
   align-items: center;

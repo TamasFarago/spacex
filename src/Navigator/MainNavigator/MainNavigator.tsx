@@ -4,7 +4,7 @@ import TopTabNavigator from '../TopTabNavigator';
 import colors from '../../Assets/colors';
 import LaunchDetailsScreen from '../../Screens/LaunchDetails';
 import FilterScreen from '../../Screens/Filter';
-import {ILaunchData} from '../../interfaces';
+import { ILaunchData } from '../../store/launchList/models';
 import Header from '../../Components/Header';
 
 export type MainStackParamList = {

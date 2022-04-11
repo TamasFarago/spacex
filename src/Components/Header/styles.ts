@@ -7,7 +7,7 @@ export const Container = styled.View`
   flex-direction: row;
   align-items: center;
   align-self: center;
-  width: ${Dimensions.get('screen').width};
+  width: ${Dimensions.get('screen').width}px;
   justify-content: center;
   background-color: ${colors.black};
 `;
@@ -23,7 +23,6 @@ export const Icon = styled.Image`
 `;
 
 export const Button = styled.TouchableOpacity`
-  /* padding: 20px; */
   position: absolute;
-  right: 20;
+  right: 20px;
 `;

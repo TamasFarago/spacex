@@ -9,7 +9,7 @@ import {
   CardBackground,
 } from './styles';
 import {formatDate} from '../../Screens/utils';
-import {ILaunchData} from '../../interfaces';
+import { ILaunchData } from '../../store/launchList/models';
 import {useNavigation} from '@react-navigation/native';
 import {LaunchDetailsNavigationProp} from './interfaces';
 

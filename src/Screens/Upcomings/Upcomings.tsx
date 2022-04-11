@@ -3,12 +3,13 @@ import React from 'react';
 import {Container} from './styles';
 import useFetch from '../../Hooks/useFetch';
 import Card from '../../Components/Card';
-import { ILaunchData } from '../../store/launchList/models';
-import {useSelector} from "react-redux"
+import {ILaunchData} from '../../store/launchList/models';
+import {useSelector} from 'react-redux';
 import IStateTree from '../../store/IStateTree';
+import {ActivityIndicator} from 'react-native';
 
 const Upcomings = () => {
-  useFetch({endpoint: 'upcoming'});
+  const {loading} = useFetch({endpoint: 'upcoming'});
 
   const {byDate, byStatus, upcomings, filteredUpcomings} = useSelector(
     (state: IStateTree) => state.launchList,
@@ -16,15 +17,17 @@ const Upcomings = () => {
 
   return (
     <Container>
-      <FlatList
-        contentContainerStyle={{paddingTop: 16}}
-        initialNumToRender={20}
-        data={byDate || byStatus? filteredUpcomings : upcomings}
-        keyExtractor={item => item.mission_name}
-        renderItem={({item}: {item: ILaunchData}) => (
-          <Card item={item}/>
-        )}
-      />
+      {loading ? (
+        <ActivityIndicator />
+      ) : (
+        <FlatList
+          contentContainerStyle={{paddingTop: 16}}
+          initialNumToRender={20}
+          data={byDate || byStatus ? filteredUpcomings : upcomings}
+          keyExtractor={item => item.mission_name}
+          renderItem={({item}: {item: ILaunchData}) => <Card item={item} />}
+        />
+      )}
     </Container>
   );
 };

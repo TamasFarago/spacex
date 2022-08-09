@@ -1,18 +1,15 @@
 import {useEffect, useState} from 'react';
 import {useDispatch} from 'react-redux';
-import {
-  addUpcomings,
-  addCompleted,
-} from '../store/launchList/actions';
+import {addUpcomings, addCompleted} from '../store/launchList/actions';
 
-const BASE_URL = 'https://api.spacexdata.com/v3/launches/';
+const BASE_URL = 'https://api.spacexdata.com/v3/launches/'; //This would be in an env file in production
 
 const useFetch = ({endpoint}: {endpoint: string}) => {
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
 
   const fetchData = async <T>(): Promise<T> => {
-    setLoading(true)
+    setLoading(true);
     const response = await fetch(`${BASE_URL}${endpoint}`, {
       method: 'GET',
       mode: 'cors',
@@ -26,16 +23,15 @@ const useFetch = ({endpoint}: {endpoint: string}) => {
     } else {
       dispatch(addUpcomings(data));
     }
-    setLoading(false)
+    setLoading(false);
     return data;
   };
-
 
   useEffect(() => {
     fetchData();
   }, []);
 
-  return {loading}
+  return {loading};
 };
 
 export default useFetch;

@@ -1,8 +1,8 @@
 import styled from 'styled-components/native';
 import colors from '../../Assets/colors';
-import { Dimensions } from 'react-native';
+import {Dimensions} from 'react-native';
 
-const width = Dimensions.get("screen").width
+const width = Dimensions.get('screen').width;
 
 export const Container = styled.View`
   background-color: ${colors.black};
@@ -14,8 +14,5 @@ export const Card = styled.View`
   background-color: ${colors.grey};
   height: 80px;
   width: ${width * 0.9};
-  align-self: center
+  align-self: center;
 `;
-
-
-

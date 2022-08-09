@@ -3,8 +3,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import TopTabNavigator from '../TopTabNavigator';
 import colors from '../../Assets/colors';
 import LaunchDetailsScreen from '../../Screens/LaunchDetails';
-import FilterScreen from '../../Screens/Filter';
-import { ILaunchData } from '../../store/launchList/models';
+import {ILaunchData} from '../../store/launchList/models';
 import Header from '../../Components/Header';
 
 export type MainStackParamList = {
@@ -12,7 +11,6 @@ export type MainStackParamList = {
   LaunchDetails: {
     details: ILaunchData;
   };
-  Filter: undefined;
 };
 
 const Stack = createStackNavigator<MainStackParamList>();
@@ -37,13 +35,6 @@ const MainNavigator = () => {
         component={LaunchDetailsScreen}
         options={{title: 'Launch Details'}}
       />
-      <Stack.Group>
-        <Stack.Screen
-          name="Filter"
-          component={FilterScreen}
-          options={{presentation: "modal", headerShown: false}}
-        />
-      </Stack.Group>
     </Stack.Navigator>
   );
 };

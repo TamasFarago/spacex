@@ -1,19 +1,19 @@
 import {FlatList} from 'react-native';
 import React from 'react';
-import {Container} from './styles';
 import useFetch from '../../Hooks/useFetch';
+import {Container} from './styles';
 import Card from '../../Components/Card';
-import {ILaunchData} from '../../store/launchList/models';
 import {useSelector} from 'react-redux';
 import IStateTree from '../../store/IStateTree';
+import {ILaunchData} from '../../store/launchList/models';
 import {ActivityIndicator} from 'react-native';
+import {useRoute} from '@react-navigation/native';
 
-const Upcomings = () => {
-  const {loading} = useFetch({endpoint: 'upcoming'});
-
-  const {byDate, byStatus, upcomings, filteredUpcomings} = useSelector(
-    (state: IStateTree) => state.launchList,
-  );
+const LaunchList = () => {
+  const route = useRoute();
+  const endpoint = route.name === 'Completed' ? 'past' : 'upcoming';
+  const {loading} = useFetch({endpoint});
+  const {completed} = useSelector((state: IStateTree) => state.launchList);
 
   return (
     <Container>
@@ -21,9 +21,9 @@ const Upcomings = () => {
         <ActivityIndicator />
       ) : (
         <FlatList
-          contentContainerStyle={{paddingTop: 16}}
+          contentContainerStyle={{paddingVertical: 16}}
           initialNumToRender={20}
-          data={byDate || byStatus ? filteredUpcomings : upcomings}
+          data={completed}
           keyExtractor={item => item.mission_name}
           renderItem={({item}: {item: ILaunchData}) => <Card item={item} />}
         />
@@ -32,4 +32,4 @@ const Upcomings = () => {
   );
 };
 
-export default Upcomings;
+export default LaunchList;
